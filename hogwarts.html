@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>My Website</title>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<script src="https://cdn.anychart.com/releases/8.0.0/js/anychart-base.min.js"></script>
+</head>
+
+<body>
+	<header id="main-header">
+		<div class="container">
+			<h1>Welcome to MSGM House Points</h1>
+		</div>
+	</header>
+
+	<section id="showcase">
+	<!--
+		<div class="container">
+			<h1>Lorem ipsum dolor sit amet, consectetur adipisicing elit</h1>
+		</div>
+	
+	<div id="chart"></div>                                   
+    <script>
+    	anychart.onDocumentReady(function() {  
+    		fetch('https://api.apispreadsheets.com/data/4657/')
+    		.then((response) => {
+            return response.json();
+        	})
+        	.then((myJson) => {
+        	var data = {
+            header: ["Gryffindor", "Hufflepuff", "Ravenclaw", "Slytherin"],
+            rows: myJson.data
+          }
+          // create the chart
+          var chart = anychart.column();
+          // add the data
+          chart.data(data);
+          // set the chart title
+          chart.title("House Points");
+          // draw
+          chart.container("chart");
+          chart.draw();
+        });
+      });
+    </script>
+	-->
+	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <script type="text/javascript">
+    google.charts.load("current", {packages:['corechart']});
+    google.charts.setOnLoadCallback(drawChart);
+    function drawChart() {
+      var data = google.visualization.arrayToDataTable([
+        ["Houset", "Points", { role: "style" } ],
+        ["Gryffindor", 100, "#B72500"],
+        ["Hufflepuff", 75, "#F7C839"],
+        ["Ravenclaw", 120, "#0D27B4"],
+        ["Slytherin", 190, "#038800"]
+      ]);
+
+      var view = new google.visualization.DataView(data);
+      view.setColumns([0, 1,
+                       { calc: "stringify",
+                         sourceColumn: 1,
+                         type: "string",
+                         role: "annotation" },
+                       2]);
+
+      var options = {
+        title: "House Points",
+        width: 1000,
+        height: 800,
+        chartArea: {'left': '300', 'top': '100', 'width': '100%', 'height': '50%'},
+        bar: {groupWidth: "95%"},
+        legend: { position: "none" },
+        backgroundColor: 'transparent'
+        haxis
+        
+        };
+     
+      
+      var chart = new google.visualization.ColumnChart(document.getElementById("columnchart_values"));
+      chart.draw(view, options);
+  }
+  </script>
+<div id="columnchart_values" style="width: 900px; height: 300px"></div>
+	</section>
+
+	
+			
+		</aside>
+	</div>
+
+
+	<footer id="main-footer">
+		<p>Copyright &copy; 2020; My Website</p>
+		
+	</footer>
+</body>
+</html>
